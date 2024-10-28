@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 import sys
 
 Report_Category = sys.argv[1] 
-input_file = sys.argv[2]  # Add this line to get the file path from Jenkins
+# input_file = sys.argv[2]  # Add this line to get the file path from Jenkins
 
 # Report_Category = "Best_Case"
 if Report_Category == "Best_Case":
