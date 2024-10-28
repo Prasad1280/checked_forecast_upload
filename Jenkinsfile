@@ -23,7 +23,7 @@ pipeline {
                     // Copy uploaded file to workspace with expected name
                     // sh 'cp "${INPUT_FILE}" input_file.xlsx'
                     // Run Python script with proper parameter handling
-                    sh "/home/ef_user/miniconda3/envs/stretto_ML/bin/python Checked_forecast_upload.py ${params.Report_Category} input_file.xlsx"
+                    sh "/home/ef_user/miniconda3/envs/stretto_ML/bin/python Checked_forecast_upload.py ${params.Report_Category}"
                 }
             }
             post {

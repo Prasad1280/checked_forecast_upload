@@ -71,7 +71,7 @@ if Report_Category == "Best_Case":
 
     # Replace hardcoded file path with input_file parameter
     # file_path = 'Best_Case_Forecast_Report_101924_UI_Raw.xlsx'  # Remove this line
-    data = load_excel_data(input_file)  # Use input_file instead
+    data = load_excel_data("input_file.xlsx")  # Use input_file instead
 
     chapter_mapping = Chapter_Mapping
     district_mapping = Court_Mapping
