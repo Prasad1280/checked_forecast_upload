@@ -11,11 +11,12 @@ pipeline {
     }
 
     stages {
-        stage('Copy Input File') {
+        stage('Process Upload') {
             steps {
                 script {
-                    // Copy uploaded file to workspace
-                    sh "cp ${params.INPUT_FILE} ${WORKSPACE}/"
+                    // Get the name of the uploaded file
+                    def uploadedFile = params.INPUT_FILE.split('/')[-1]
+                    echo "Processing uploaded file: ${uploadedFile}"
                 }
             }
         }
@@ -29,7 +30,8 @@ pipeline {
         stage('Accuracy_Calculation') {
             steps {
                 script {
-                    sh "/home/ef_user/miniconda3/envs/stretto_ML/bin/python Checked_forecast_upload.py ${Report_Category} ${params.INPUT_FILE}"
+                    def uploadedFile = params.INPUT_FILE.split('/')[-1]
+                    sh "/home/ef_user/miniconda3/envs/stretto_ML/bin/python Checked_forecast_upload.py ${Report_Category} '${uploadedFile}'"
                 }
             }
             post {
