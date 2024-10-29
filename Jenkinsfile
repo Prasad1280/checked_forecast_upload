@@ -31,12 +31,12 @@ pipeline {
                     echo "Input file path: ${inputFile}"
 
                     // Ensure the input file exists
-                    sh '''
+                    sh """
                     if [ ! -f "${inputFile}" ]; then
                         echo "Input file not found at ${inputFile}"
                         exit 1
                     fi
-                    '''
+                    """
 
                     // Run the Python script with the correct input file path
                     sh "${env.CONDA_ENV_PATH}/bin/python Checked_forecast_upload.py ${params.Report_Category} ${inputFile}"
