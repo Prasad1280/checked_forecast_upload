@@ -10,20 +10,25 @@ pipeline {
         file(name: 'INPUT_FILE', description: 'Upload your Excel/CSV file')
     }
     
+    environment {
+        // Define the conda environment path as an environment variable for easy access
+        CONDA_ENV_PATH = '/home/ef_user/miniconda3/envs/stretto_ML'
+        CONDA_EXEC_PATH = '/home/ef_user/miniconda3/bin'
+    }
+    
     stages {
         stage('Activate FS Environment') {
             steps {
-                sh '/home/ef_user/miniconda3/bin/activate /home/ef_user/miniconda3/envs/stretto_ML'
+                sh "${env.CONDA_EXEC_PATH}/activate ${env.CONDA_ENV_PATH}"
             }
         }
         
         stage('File_Preparation_for_db') {
             steps {
                 script {
-                    // Copy uploaded file to workspace with expected name
-                    // sh 'cp "${INPUT_FILE}" input_file.xlsx'
-                    // Run Python script with proper parameter handling
-                    sh "/home/ef_user/miniconda3/envs/stretto_ML/bin/python Checked_forecast_upload.py ${params.Report_Category}"
+                    // Use the basename of the input file to construct the expected path in the workspace
+                    def inputFile = "${WORKSPACE}/${params.INPUT_FILE}".tokenize('/').last()
+                    sh "${env.CONDA_ENV_PATH}/bin/python Checked_forecast_upload.py ${params.Report_Category} ${inputFile}"
                 }
             }
             post {
@@ -35,7 +40,7 @@ pipeline {
         
         stage('Deactivate FS Environment') {
             steps {
-                sh '/home/ef_user/miniconda3/bin/deactivate /home/ef_user/miniconda3/envs/stretto_ML'
+                sh "${env.CONDA_EXEC_PATH}/deactivate ${env.CONDA_ENV_PATH}"
             }
         }
     }

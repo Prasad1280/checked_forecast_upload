@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 import sys
 
 Report_Category = sys.argv[1] 
-# input_file = sys.argv[2]  # Add this line to get the file path from Jenkins
+input_file = sys.argv[2]  # Add this line to get the file path from Jenkins
 
 # Report_Category = "Best_Case"
 if Report_Category == "Best_Case":
@@ -71,7 +71,7 @@ if Report_Category == "Best_Case":
 
     # Replace hardcoded file path with input_file parameter
     # file_path = 'Best_Case_Forecast_Report_101924_UI_Raw.xlsx'  # Remove this line
-    data = load_excel_data("input_file.xlsx")  # Use input_file instead
+    data = load_excel_data(input_file)  # Use input_file instead
 
     chapter_mapping = Chapter_Mapping
     district_mapping = Court_Mapping
