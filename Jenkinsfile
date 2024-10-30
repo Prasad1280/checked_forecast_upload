@@ -22,7 +22,7 @@ pipeline {
         stage('Final_Forecasts_processing_and_upload') {
             steps {
                 script {
-                    sh "/home/ef_user/miniconda3/envs/stretto_ML/bin/python Checked_forecast_upload.py '${params['Report Category']}' --input_file '${params.Input_File}'"
+                    sh "/home/ef_user/miniconda3/envs/stretto_ML/bin/python Checked_forecast_upload.py ${params.Report_Category} ${params.Input_File}"
                 }
             }
             post {
