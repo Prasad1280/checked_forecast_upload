@@ -6,7 +6,7 @@ import os
 
 # Assign arguments to variables
 Report_Category = sys.argv[1]
-input_file = sys.argv[2]  # Get the file path from arguments
+# input_file = sys.argv[2]  # Get the file path from arguments
 
 if Report_Category == "Best_Case":
     # Database credentials and connection details
@@ -79,7 +79,8 @@ if Report_Category == "Best_Case":
         return data_long
 
     # Load data from Excel file
-    data = load_excel_data(input_file)
+    file_path = "input_file.xlsx"
+    data = load_excel_data(file_path)
 
     # Create mapping dictionaries
     chapter_mapping = Chapter_Mapping
