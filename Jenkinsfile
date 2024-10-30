@@ -19,7 +19,7 @@ pipeline {
                 sh '/home/ef_user/miniconda3/bin/activate /home/ef_user/miniconda3/envs/stretto_ML'
             }
         }
-        stage('Accuracy_Calculation') {
+        stage('Final_Forecasts_processing_and_upload') {
             steps {
                 script {
                     sh "/home/ef_user/miniconda3/envs/stretto_ML/bin/python Checked_forecast_upload.py '${params['Report Category']}' --input_file '${params.Input_File}'"

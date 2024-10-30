@@ -19,7 +19,7 @@ args = parser.parse_args()
 Report_Category = args.Report_Category
 input_file = args.input_file  # Get the file path from arguments
 
-if Report_Category == "Best_Case"
+if Report_Category == "Best_Case":
     # Database credentials and connection details
     # It's recommended to use environment variables or a configuration file for credentials
     username = "admin"  # Replace with your method of securely fetching the username
