@@ -1,23 +1,12 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import sys
-import argparse
 import datetime
 import os
 
-# Set up argument parser
-parser = argparse.ArgumentParser(description='Process report category and input file.')
-
-# Add arguments
-parser.add_argument('Report_Category', choices=['Best_Case', 'Market'], help='Enter the Forecast Level')
-parser.add_argument('--input_file', required=True, help='Path to the input .xlsx file')
-
-# Parse arguments
-args = parser.parse_args()
-
 # Assign arguments to variables
-Report_Category = args.Report_Category
-input_file = args.input_file  # Get the file path from arguments
+Report_Category = sys.argv[1]
+input_file = sys.argv[2]  # Get the file path from arguments
 
 if Report_Category == "Best_Case":
     # Database credentials and connection details
