@@ -4,9 +4,13 @@ import sys
 import datetime
 import os
 
+# Print all file names in the current working directory
+print("Files in the current working directory:")
+for filename in os.listdir('.'):
+    print(filename)
+
 # Assign arguments to variables
 Report_Category = sys.argv[1]
-# input_file = sys.argv[2]  # Get the file path from arguments
 
 if Report_Category == "Best_Case":
     # Database credentials and connection details
