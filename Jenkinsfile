@@ -1,20 +1,18 @@
 pipeline {
     agent any
-
+    
     parameters {
         choice(
             name: 'Report_Category',
             choices: ['Best_Case', 'Market'],
             description: 'Enter the Forecast Level'
         )
-        // file(
-        //     name: 'Input_File',
-        //     description: 'Upload the .xlsx input file',
-        //     // Add the file location where the Excel file should be stored
-        //     fileLocation: '/mnt/external1/jenkins_home/workspace/Forecast_Upload_Pipeline/input_file.xlsx'
-        // )
+        base64File(
+            name: 'Input_File',
+            description: 'Upload the .xlsx input file'
+        )
     }
-
+    
     stages {
         stage('Activate FS Environment') {
             steps {
