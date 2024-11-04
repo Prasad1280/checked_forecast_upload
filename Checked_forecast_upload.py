@@ -4,6 +4,8 @@ import sys
 import datetime
 import os
 
+print("Current working directory:", os.getcwd())
+
 # Print all file names in the current working directory
 print("Files in the current working directory:")
 for filename in os.listdir('.'):
