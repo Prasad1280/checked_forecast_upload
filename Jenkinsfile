@@ -9,7 +9,9 @@ pipeline {
         )
         file(
             name: 'Input_File',
-            description: 'Upload the .xlsx input file'
+            description: 'Upload the .xlsx input file',
+            // Add the file location where the Excel file should be stored
+            fileLocation: '/mnt/external1/jenkins_home/workspace/Forecast_Upload_Pipeline/input_file.xlsx'
         )
     }
 
